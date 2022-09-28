@@ -70,10 +70,10 @@
 &lt;li&gt;&lt;strong&gt;SAGA&lt;/strong&gt;：SAGA 的不一致窗口时长与消息接近，但是如果发生回滚，而子事务中正向操作修改的数据又会被用户看到，这部分数据就是错误数据，容易给用户带来较差的体验，因此一致性是最差的&lt;/li&gt;
 &lt;/ul&gt;
 </content>
-        <category term="后端" scheme="https://i-wiki.cn/categories/%E5%90%8E%E7%AB%AF/" />
-        <category term="分布式事务" scheme="https://i-wiki.cn/categories/%E5%90%8E%E7%AB%AF/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
+        <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
+        <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
-        <category term="后端" scheme="https://i-wiki.cn/tags/%E5%90%8E%E7%AB%AF/" />
+        <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
         <updated>2022-09-28T08:18:01.000Z</updated>
     </entry>
     <entry>
@@ -198,9 +198,10 @@ bt-seed-unverified=true
 bt-save-metadata=true
 &lt;/code&gt;&lt;/pre&gt;
 </content>
-        <category term="工具" scheme="https://i-wiki.cn/categories/%E5%B7%A5%E5%85%B7/" />
-        <category term="aria2" scheme="https://i-wiki.cn/categories/%E5%B7%A5%E5%85%B7/aria2/" />
+        <category term="工具" scheme="https://i-wiki.cn/categories/tools/" />
+        <category term="aria2" scheme="https://i-wiki.cn/categories/tools/aria2/" />
         <category term="配置文件" scheme="https://i-wiki.cn/categories/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" />
+        <category term="工具" scheme="https://i-wiki.cn/tags/tools/" />
         <category term="配置文件" scheme="https://i-wiki.cn/tags/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" />
         <category term="aria2" scheme="https://i-wiki.cn/tags/aria2/" />
         <updated>2022-09-27T11:03:23.000Z</updated>

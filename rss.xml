@@ -8,7 +8,7 @@
         <author>
           <name>PPYYLEE</name>
         </author>
-        <description>渺小的沙子 </description>
+        <description>渺小的沙子 无尽的空洞</description>
         <language>zh-Cn</language>
         <pubDate>Wed, 28 Sep 2022 16:18:01 +0800</pubDate>
         <lastBuildDate>Wed, 28 Sep 2022 16:18:01 +0800</lastBuildDate>
@@ -17,10 +17,10 @@
             <guid isPermalink="true">https://i-wiki.cn/2022/b77f3f01b822/</guid>
             <title>分布式事务：理论篇</title>
             <link>https://i-wiki.cn/2022/b77f3f01b822/</link>
-            <category term="后端" scheme="https://i-wiki.cn/categories/%E5%90%8E%E7%AB%AF/" />
-            <category term="分布式事务" scheme="https://i-wiki.cn/categories/%E5%90%8E%E7%AB%AF/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
+            <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
+            <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
-            <category term="后端" scheme="https://i-wiki.cn/tags/%E5%90%8E%E7%AB%AF/" />
+            <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
             <pubDate>Wed, 28 Sep 2022 16:18:01 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;事务&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#事务&#34;&gt;#&lt;/a&gt; 事务&lt;/h2&gt;
 &lt;p&gt;事务具有 4 个属性：原子性、一致性、隔离性、持久性。这四个属性通常称为 ACID 特性。&lt;/p&gt;
@@ -83,9 +83,10 @@
             <guid isPermalink="true">https://i-wiki.cn/2022/e2c29a555bad/</guid>
             <title>aria2 配置文件</title>
             <link>https://i-wiki.cn/2022/e2c29a555bad/</link>
-            <category term="工具" scheme="https://i-wiki.cn/categories/%E5%B7%A5%E5%85%B7/" />
-            <category term="aria2" scheme="https://i-wiki.cn/categories/%E5%B7%A5%E5%85%B7/aria2/" />
+            <category term="工具" scheme="https://i-wiki.cn/categories/tools/" />
+            <category term="aria2" scheme="https://i-wiki.cn/categories/tools/aria2/" />
             <category term="配置文件" scheme="https://i-wiki.cn/categories/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" />
+            <category term="工具" scheme="https://i-wiki.cn/tags/tools/" />
             <category term="配置文件" scheme="https://i-wiki.cn/tags/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" />
             <category term="aria2" scheme="https://i-wiki.cn/tags/aria2/" />
             <pubDate>Tue, 27 Sep 2022 19:03:23 +0800</pubDate>

@@ -3,7 +3,7 @@
     "title": "PPYYLEE",
     "subtitle": "学无止境",
     "icon": "https://i-wiki.cn/images/favicon.ico",
-    "description": "渺小的沙子 ",
+    "description": "渺小的沙子 无尽的空洞",
     "home_page_url": "https://i-wiki.cn",
     "items": [
         {
@@ -29,6 +29,7 @@
                 "工具",
                 "aria2",
                 "配置文件",
+                "工具",
                 "配置文件",
                 "aria2"
             ]
