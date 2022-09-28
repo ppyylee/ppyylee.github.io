@@ -10,9 +10,75 @@
         </author>
         <description>渺小的沙子 </description>
         <language>zh-Cn</language>
-        <pubDate>Tue, 27 Sep 2022 19:03:23 +0800</pubDate>
-        <lastBuildDate>Tue, 27 Sep 2022 19:03:23 +0800</lastBuildDate>
+        <pubDate>Wed, 28 Sep 2022 16:18:01 +0800</pubDate>
+        <lastBuildDate>Wed, 28 Sep 2022 16:18:01 +0800</lastBuildDate>
         <category term="学习" />
+        <item>
+            <guid isPermalink="true">https://i-wiki.cn/2022/b77f3f01b822/</guid>
+            <title>分布式事务：理论篇</title>
+            <link>https://i-wiki.cn/2022/b77f3f01b822/</link>
+            <category term="后端" scheme="https://i-wiki.cn/categories/%E5%90%8E%E7%AB%AF/" />
+            <category term="分布式事务" scheme="https://i-wiki.cn/categories/%E5%90%8E%E7%AB%AF/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
+            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
+            <category term="后端" scheme="https://i-wiki.cn/tags/%E5%90%8E%E7%AB%AF/" />
+            <pubDate>Wed, 28 Sep 2022 16:18:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;事务&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#事务&#34;&gt;#&lt;/a&gt; 事务&lt;/h2&gt;
+&lt;p&gt;事务具有 4 个属性：原子性、一致性、隔离性、持久性。这四个属性通常称为 ACID 特性。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Atomicity（原子性）：一个事务中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被恢复到事务开始前的状态，就像这个事务从来没有执行过一样。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;Consistency（一致性）：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。完整性包括外键约束、应用定义的等约束不会被破坏。&lt;/li&gt;
+&lt;li&gt;Isolation（隔离性）：数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。&lt;/li&gt;
+&lt;li&gt;Durability（持久性）：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;主流的数据库例如 Mysql、Postgres 等，都支持 ACID 事务，其内部会采用 MVCC（多版本并发控制）技术，实现高性能、高并发的本地事务&lt;/p&gt;
+&lt;h2 id=&#34;分布式理论&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#分布式理论&#34;&gt;#&lt;/a&gt; 分布式理论&lt;/h2&gt;
+&lt;p&gt;分布式事务涉及多个节点，是一个典型的分布式系统，与单机系统有非常大的差别。一个分布式系统最多只能同时满足一致性（Consistency）、可用性（Availability）和分区容错性（Partition tolerance）这三项中的两项，这被称为 CAP 理论。&lt;/p&gt;
+&lt;h4 id=&#34;c-一致性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#c-一致性&#34;&gt;#&lt;/a&gt; C 一致性&lt;/h4&gt;
+&lt;p&gt;分布式系统中，数据一般会存在不同节点的副本中，如果对第一个节点的数据成功进行了更新操作，而第二个节点上的数据却没有得到相应更新，这时候读取第二个节点的数据依然是更新前的数据，即脏数据，这就是分布式系统数据不一致的情况。&lt;/p&gt;
+&lt;p&gt;在分布式系统中，如果能够做到针对一个数据项的更新操作执行成功后，所有的用户都能读取到最新的值，那么这样的系统就被认为具有强一致性（或严格的一致性）。&lt;/p&gt;
+&lt;p&gt;请注意 CAP 中的一致性和 ACID 中的一致性，虽然单词相同，但实际含义不同，请注意区分&lt;/p&gt;
+&lt;h4 id=&#34;a-可用性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#a-可用性&#34;&gt;#&lt;/a&gt; A 可用性&lt;/h4&gt;
+&lt;p&gt;在集群中一部分节点故障后，集群整体是否还能响应客户端的读写请求。&lt;/p&gt;
+&lt;p&gt;在现代的互联网应用中，如果因为服务器宕机等问题，导致服务长期不可用，是不可接受的&lt;/p&gt;
+&lt;h4 id=&#34;p-分区容错性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#p-分区容错性&#34;&gt;#&lt;/a&gt; P 分区容错性&lt;/h4&gt;
+&lt;p&gt;以实际效果而言，分区相当于对通信的时限要求。系统如果不能在时限内达成数据一致性，就意味着发生了分区的情况，必须就当前操作在 C 和 A 之间做出选择。&lt;/p&gt;
+&lt;p&gt;提高分区容忍性的办法就是一个数据项复制到多个节点上，那么出现分区之后，这一数据项仍然能在其他区中读取，容忍性就提高了。然而，把数据复制到多个节点，就会带来一致性的问题，就是多个节点上面的数据可能是不一致的。&lt;/p&gt;
+&lt;h3 id=&#34;面临的问题&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#面临的问题&#34;&gt;#&lt;/a&gt; 面临的问题：&lt;/h3&gt;
+&lt;p&gt;​		对于多数大型互联网应用的场景，主机众多、部署分散，而且现在的集群规模越来越大，所以节点故障、网络故障是常态，而且要保证服务可用性达到 N 个 9，即保证 P 和 A，舍弃 C。&lt;/p&gt;
+&lt;h4 id=&#34;base理论&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#base理论&#34;&gt;#&lt;/a&gt; BASE 理论&lt;/h4&gt;
+&lt;p&gt;BASE 是 Basically Available（基本可用）、Soft state（软状态）和 Eventually consistent（最终一致性）三个短语的简写，BASE 是对 CAP 中一致性和可用性权衡的结果，其来源于对大规模互联网系统分布式实践的结论，是基于 CAP 定理逐步演化而来的，其核心思想是即使无法做到强一致性（Strong consistency），但每个应用都可以根据自身的业务特点，采用适当的方式来使系统达到最终一致性（Eventual consistency）。接下来我们着重对 BASE 中的三要素进行详细讲解。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基本可用是指分布式系统在出现不可预知故障的时候，允许损失部分可用性 —— 但请注意，这绝不等价于系统不可用。&lt;/li&gt;
+&lt;li&gt;弱状态也称为软状态，和硬状态相对，是指允许系统中的数据存在中间状态，并认为该中间状态的存在不会影响系统的整体可用性，即允许系统在不同节点的数据副本之间进行数据同步的过程存在延时。&lt;/li&gt;
+&lt;li&gt;最终一致性强调的是系统中所有的数据副本，在经过一段时间的同步后，最终能够达到一个一致的状态。因此，最终一致性的本质是需要系统保证最终数据能够达到一致，而不需要实时保证系统数据的强一致性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总的来说，BASE 理论面向的是大型高可用可扩展的分布式系统，提出通过牺牲强一致性来获得可用性，并允许数据在一段时间内是不一致的，但最终达到一致状态。&lt;/p&gt;
+&lt;p&gt;许多的 NoSQL 是按照 BASE 理论进行设计的，典型的例子包括：Dynamo、Cassandra、CouchDB。&lt;/p&gt;
+&lt;h2 id=&#34;分布式事务&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#分布式事务&#34;&gt;#&lt;/a&gt; 分布式事务&lt;/h2&gt;
+&lt;p&gt;银行跨行转账业务是一个典型分布式事务场景，假设 A 需要跨行转账给 B，那么就涉及两个银行的数据，无法通过一个数据库的本地事务保证转账的 ACID，只能够通过分布式事务来解决。&lt;/p&gt;
+&lt;p&gt;分布式事务就是指事务的发起者、资源及资源管理器和事务协调者分别位于分布式系统的不同节点之上。在上述转账的业务中，用户 A-100 操作和用户 B+100 操作不是位于同一个节点上。本质上来说，分布式事务就是为了保证在分布式场景下，数据操作的正确执行。&lt;/p&gt;
+&lt;p&gt;分布式事务可以分为两类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一类为：NewSQL 的内部分布式事务&lt;/li&gt;
+&lt;li&gt;第二类为：跨数据库、跨服务的分布式事务&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;分布式事务一致性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#分布式事务一致性&#34;&gt;#&lt;/a&gt; 分布式事务一致性&lt;/h4&gt;
+&lt;p&gt;目前分布式事务都无法做到强一致性，只能保证最终一致性，即最终事务完成时，数据严格满足业务约束&lt;/p&gt;
+&lt;p&gt;一致性由强到弱分别是：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kdG0ucHViL3ByYWN0aWNlL3hhLmh0bWw=&#34;&gt;XA 事务&lt;/span&gt; &amp;gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kdG0ucHViL3ByYWN0aWNlL3RjYy5odG1s&#34;&gt;TCC&lt;/span&gt;&amp;gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kdG0ucHViL3ByYWN0aWNlL21zZy5odG1s&#34;&gt; 二阶段消息&lt;/span&gt; &amp;gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kdG0ucHViL3ByYWN0aWNlL3NhZ2EuaHRtbA==&#34;&gt;SAGA&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://dtm.pub/assets/c-classify.73742507.png&#34; alt=&#34;c-classify&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;不一致窗口短&lt;/strong&gt;：XA 和 TCC 在理想的情况下，可以做到不一致的窗口时间很短&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不一致窗口长&lt;/strong&gt;：SAGA 和 MSG 则缺少控制不一致窗口时间的方法，相对来说会更长&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;XA&lt;/strong&gt;：XA 虽然不是强一致，但是 XA 的一致性是多种分布式事务中，一致性最好的，因为他处于不一致的状态时间很短，只有一部分分支开始 commit，但还没有全部 commit 的这个时间窗口，数据是不一致的。因为数据库的 commit 操作耗时，通常是 10ms 内，因此不一致的窗口期很短。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TCC&lt;/strong&gt;：理论上，TCC 可以用 XA 来实现，例如 Try-Prepare，Confirm-Commit，Cancel-Rollback。但绝大多数时候，TCC 会在业务层自己实现 Try|Confirm|Cancel，因此 Confirm 操作耗时，通常高于 XA 中的 Commit，不一致的窗口时间比 XA 长&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MSG&lt;/strong&gt;：二阶消息型事务在第一个操作完成后，在所有操作完成之前，这个时间窗口是不一致的，持续时长一般比前两者更久。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SAGA&lt;/strong&gt;：SAGA 的不一致窗口时长与消息接近，但是如果发生回滚，而子事务中正向操作修改的数据又会被用户看到，这部分数据就是错误数据，容易给用户带来较差的体验，因此一致性是最差的&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://i-wiki.cn/2022/e2c29a555bad/</guid>
             <title>aria2 配置文件</title>
