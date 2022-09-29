@@ -10,9 +10,16 @@
         </author>
         <description>渺小的沙子 无尽的空洞</description>
         <language>zh-Cn</language>
-        <pubDate>Wed, 29 Sep 2021 16:21:17 +0800</pubDate>
-        <lastBuildDate>Wed, 29 Sep 2021 16:21:17 +0800</lastBuildDate>
+        <pubDate>Thu, 29 Sep 2022 18:23:12 +0800</pubDate>
+        <lastBuildDate>Thu, 29 Sep 2022 18:23:12 +0800</lastBuildDate>
         <category term="学习" />
+        <item>
+            <guid isPermalink="true">https://i-wiki.cn/2022/61e6b15af56c/</guid>
+            <title>分布式事务：DTM 二阶段消息模式</title>
+            <link>https://i-wiki.cn/2022/61e6b15af56c/</link>
+            <pubDate>Thu, 29 Sep 2022 18:23:12 +0800</pubDate>
+            <description><![CDATA[  ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://i-wiki.cn/2021/6b628305873a/</guid>
             <title>分布式事务：DTM SAGA模式</title>
@@ -208,6 +215,16 @@
 &lt;li&gt;&lt;strong&gt;MSG&lt;/strong&gt;：二阶消息型事务在第一个操作完成后，在所有操作完成之前，这个时间窗口是不一致的，持续时长一般比前两者更久。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;SAGA&lt;/strong&gt;：SAGA 的不一致窗口时长与消息接近，但是如果发生回滚，而子事务中正向操作修改的数据又会被用户看到，这部分数据就是错误数据，容易给用户带来较差的体验，因此一致性是最差的&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;分布式事务的经典解决方案&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#分布式事务的经典解决方案&#34;&gt;#&lt;/a&gt; &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tL2EvMTE5MDAwMDA0MDMyMTc1MA==&#34;&gt;分布式事务的经典解决方案&lt;/span&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;两阶段提交 / XA&lt;/li&gt;
+&lt;li&gt;SAGA&lt;/li&gt;
+&lt;li&gt;TCC&lt;/li&gt;
+&lt;li&gt;本地消息表&lt;/li&gt;
+&lt;li&gt;事务消息&lt;/li&gt;
+&lt;li&gt;最大努力通知&lt;/li&gt;
+&lt;li&gt;AT 事务模式&lt;/li&gt;
+&lt;/ol&gt;
  ]]></description>
         </item>
         <item>
