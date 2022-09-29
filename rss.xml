@@ -10,20 +10,20 @@
         </author>
         <description>渺小的沙子 无尽的空洞</description>
         <language>zh-Cn</language>
-        <pubDate>Thu, 29 Sep 2022 16:21:17 +0800</pubDate>
-        <lastBuildDate>Thu, 29 Sep 2022 16:21:17 +0800</lastBuildDate>
+        <pubDate>Wed, 29 Sep 2021 16:21:17 +0800</pubDate>
+        <lastBuildDate>Wed, 29 Sep 2021 16:21:17 +0800</lastBuildDate>
         <category term="学习" />
         <item>
-            <guid isPermalink="true">https://i-wiki.cn/2022/ad84fe6c7fcb/</guid>
+            <guid isPermalink="true">https://i-wiki.cn/2021/6b628305873a/</guid>
             <title>分布式事务：DTM SAGA模式</title>
-            <link>https://i-wiki.cn/2022/ad84fe6c7fcb/</link>
+            <link>https://i-wiki.cn/2021/6b628305873a/</link>
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="事务模式" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
             <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
             <category term="事务模式" scheme="https://i-wiki.cn/tags/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
-            <pubDate>Thu, 29 Sep 2022 16:21:17 +0800</pubDate>
+            <pubDate>Wed, 29 Sep 2021 16:21:17 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;saga模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#saga模式&#34;&gt;#&lt;/a&gt; SAGA 模式&lt;/h1&gt;
 &lt;p&gt;SAGA 事务模式是 DTM 中最常用的模式，主要是因为 SAGA 模式简单易用，工作量少，并且能够解决绝大部分业务的需求。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -80,14 +80,79 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://i-wiki.cn/2022/b77f3f01b822/</guid>
-            <title>分布式事务：理论篇</title>
-            <link>https://i-wiki.cn/2022/b77f3f01b822/</link>
+            <guid isPermalink="true">https://i-wiki.cn/2021/b520c7c67266/</guid>
+            <title>分布式事务：DTM</title>
+            <link>https://i-wiki.cn/2021/b520c7c67266/</link>
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
-            <pubDate>Wed, 28 Sep 2022 16:18:01 +0800</pubDate>
+            <category term="DTM" scheme="https://i-wiki.cn/tags/DTM/" />
+            <pubDate>Wed, 29 Sep 2021 10:47:15 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;dtm架构图&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#dtm架构图&#34;&gt;#&lt;/a&gt; DTM 架构图&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://dtm.pub/assets/arch.8ecd5239.jpg&#34; alt=&#34;arch&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;整个 DTM 架构中，一共有三个角色，分别承担了不同的功能&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RM - 资源管理器：RM 是一个应用服务，负责管理全局事务中的本地事务，他通常会连接到一个数据库，负责相关数据的修改、提交、回滚、补偿等操作。例如在前面的这个 SAGA 事务中，步骤 2、3 中被调用的 TransIn，TransOut 服务都是 RM，业务上负责 A、B 账户余额的修改&lt;/li&gt;
+&lt;li&gt;AP - 应用程序：AP 是一个应用服务，负责全局事务的编排，他会注册全局事务，注册子事务，调用 RM 接口。例如在前面的这个 SAGA 事务中，发起步骤 1 的是 AP，它编排了一个包含 TransOut、TransIn 的全局事务，然后提交给 TM&lt;/li&gt;
+&lt;li&gt;TM - 事务管理器：TM 就是 DTM 服务，负责全局事务的管理，每个全局事务都注册到 TM，每个事务分支也注册到 TM。TM 会协调所有的 RM，将同一个全局事务的不同分支，全部提交或全部回滚。例如在前面的 SAGA 事务中，TM 在步骤 2、3 中调用了各个 RM，在步骤 4 中，完成这个全局事务&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;接口协议&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#接口协议&#34;&gt;#&lt;/a&gt; 接口协议&lt;/h2&gt;
+&lt;p&gt;目前 dtm 只支持 http 和 grpc 协议，以及在这基础上的部分微服务协议。由于分布式事务涉及分布式协作，某些参与者可能出现暂时不可用或者返回 500 等异常情况是不可避免的。这些暂时不可用和 500，与业务上的失败有非常大的区别。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h5 id=&#34;接口错误与业务失败&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#接口错误与业务失败&#34;&gt;#&lt;/a&gt; 接口错误与业务失败&lt;/h5&gt;
+&lt;p&gt;例如前面的转出金额操作，如果遇见暂时不可用，或者 500，此时不应当认为转账失败，而进行回滚。&lt;/p&gt;
+&lt;p&gt;有个 dtm 的用户，在未使用分布式事务的旧系统中，曾经遇到过这类事故，起因是开发人员在调用发红包后，因为调用超时，认为发红包失败，没有扣减用户的余额，但是当红包服务恢复正常后，发现红包已发出，这就导致了金额错误，造成了事故。&lt;/p&gt;
+&lt;p&gt;因此进行分布式事务开发时，切记 &lt;strong&gt;接口返回错误 不等于 业务失败&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;对于上述的 ” 暂时不可用 “及” 500“，DTM 会进行重试。而对于成功或失败等确定的结果，则会更新分布式事务的进度。&lt;/p&gt;
+&lt;p&gt;dtm 系统中，调用分支事务的服务，有四种结果：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;SUCCESS:&lt;/strong&gt; 表示成功&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;FAILURE:&lt;/strong&gt; 表示失败，这个失败是指确定的失败结果，不需要重试。例如子事务因转账余额不足而失败，dtm 服务因为事务已完成不允许再次提交等&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ONGOING:&lt;/strong&gt; 表示未完成，还在正常进行中，此时 dtm 服务器需要采用固定间隔重试，而不是指数退避算法重试&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;其他:&lt;/strong&gt; 表示临时错误，采用指数退避算法重试，避免出现故障或者 bug，导致大量重试，导致负载过高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;h5 id=&#34;ongoing&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ongoing&#34;&gt;#&lt;/a&gt; ONGOING&lt;/h5&gt;
+&lt;p&gt;DTM 引入了一个特殊的结果 ONGOING，当 DTM 收到这个返回值时，认为这个子事务操作还在正常进行中，还未完成，需要进行重试。假如你需要预定旅游出行的机票，第三方可能需要 1 个小时才能够确认机票预定的结果，那么应用可以指定分布式事务的重试间隔时间，并在未获得确定结果时，返回 ONGOING，这样 DTM 会按照固定间隔时间重试&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下面分别说明 HTTP 和 gRPC 中，如何表示含义明确的三种结果&lt;/p&gt;
+&lt;h4 id=&#34;http&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#http&#34;&gt;#&lt;/a&gt; HTTP&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;SUCCESS:&lt;/strong&gt; 状态码 200 StatusOK&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;FAILURE:&lt;/strong&gt; 状态码 409 StatusConflict&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ONGOING:&lt;/strong&gt; 状态码 425 StatusTooEarly&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;grpc&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#grpc&#34;&gt;#&lt;/a&gt; gRPC&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;SUCCESS:&lt;/strong&gt; 状态码 OK&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;FAILURE:&lt;/strong&gt; 状态码 Aborted&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ONGOING:&lt;/strong&gt; 状态码 FailedPrecondition&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上 HTTP 和 gRPC 的几个结果定义，对于云原生上的重试策略是友好兼容的，默认情况下，如果微服务配置了重试策略，那么对于其他结果（通常为 HTTP 502 或者 gRPC Unavailable）会进行重试，而确定的结果，则不会被云原生上的重试策略重试。&lt;/p&gt;
+&lt;p&gt;还有一点，对于某些不支持回滚的事务分支，例如 Msg 模式的分支，Saga 模式的 Compensation，Tcc 模式的 Confirm/Cancel，在这些分支里面不应当返回 FAILURE&lt;/p&gt;
+&lt;h2 id=&#34;与xa-dtp模型异同&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#与xa-dtp模型异同&#34;&gt;#&lt;/a&gt; 与 XA DTP 模型异同&lt;/h2&gt;
+&lt;p&gt;DTM 的架构和角色，与 X/Open XA 的 DTP 模型一致，RM、AP、TM 担当的功能都是一致的，只是将 XA 的 DTP 模型拓展到了服务 / 微服务架构上。&lt;/p&gt;
+&lt;p&gt;DTM 对比了其他事务框架的角色划分和 DTP 的角色划分，认为 DTP 在总体架构，依旧能够适用于跨服务这种分布式事务形式，因此保留了 AP、RM、TM 的划分&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://dtm.pub/assets/xa-dtp.62f4d7d0.png&#34; alt=&#34;xa-dtp&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;主要区别如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TM 不再是单点，而是集群部署，本身就具备高可用。原先 2PC 中的单点问题，就被集群化的 dtm 实例 + 共享的高可用存储解决了。这其中没有复杂的选举过程，而是依赖云服务上提供的高可用共享存储引擎（云服务商户进行故障重新选举，用户不用关心）&lt;/li&gt;
+&lt;li&gt;RM 不是直接的数据库，而是服务，服务的与他背后数据库交互。TM 与 RM 服务交互，而不会与数据库直接交互&lt;/li&gt;
+&lt;li&gt;AP 不是直接的本地程序，而是服务，他对 RM 的访问，是通过网络的 api 请求，而不是本地 SDK 调用。&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://i-wiki.cn/2021/0d3f3db47143/</guid>
+            <title>分布式事务：理论篇</title>
+            <link>https://i-wiki.cn/2021/0d3f3db47143/</link>
+            <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
+            <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
+            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
+            <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+            <pubDate>Tue, 28 Sep 2021 16:18:01 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;事务&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#事务&#34;&gt;#&lt;/a&gt; 事务&lt;/h2&gt;
 &lt;p&gt;事务具有 4 个属性：原子性、一致性、隔离性、持久性。这四个属性通常称为 ACID 特性。&lt;/p&gt;
 &lt;ul&gt;
@@ -146,16 +211,27 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://i-wiki.cn/2022/e2c29a555bad/</guid>
+            <guid isPermalink="true">https://i-wiki.cn/2021/86103141b6be/</guid>
+            <title>hyperf学习笔记</title>
+            <link>https://i-wiki.cn/2021/86103141b6be/</link>
+            <category term="PHP" scheme="https://i-wiki.cn/categories/PHP/" />
+            <category term="框架" scheme="https://i-wiki.cn/categories/PHP/%E6%A1%86%E6%9E%B6/" />
+            <category term="学习笔记" scheme="https://i-wiki.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" />
+            <category term="PHP" scheme="https://i-wiki.cn/tags/PHP/" />
+            <pubDate>Mon, 27 Sep 2021 18:54:09 +0800</pubDate>
+            <description><![CDATA[  ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://i-wiki.cn/2020/9982038c8ca6/</guid>
             <title>aria2 配置文件</title>
-            <link>https://i-wiki.cn/2022/e2c29a555bad/</link>
+            <link>https://i-wiki.cn/2020/9982038c8ca6/</link>
             <category term="工具" scheme="https://i-wiki.cn/categories/tools/" />
             <category term="aria2" scheme="https://i-wiki.cn/categories/tools/aria2/" />
             <category term="配置文件" scheme="https://i-wiki.cn/categories/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" />
             <category term="工具" scheme="https://i-wiki.cn/tags/tools/" />
             <category term="配置文件" scheme="https://i-wiki.cn/tags/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" />
             <category term="aria2" scheme="https://i-wiki.cn/tags/aria2/" />
-            <pubDate>Tue, 27 Sep 2022 19:03:23 +0800</pubDate>
+            <pubDate>Sun, 27 Dec 2020 19:03:23 +0800</pubDate>
             <description><![CDATA[ &lt;pre&gt;&lt;code&gt;## &#39;#&#39;开头为注释内容, 选项都有相应的注释说明, 根据需要修改 ##
 ## 被注释的选项填写的是默认值, 建议在需要修改时再取消注释  ##
 
@@ -274,17 +350,6 @@ bt-seed-unverified=true
 bt-save-metadata=true
 &lt;/code&gt;&lt;/pre&gt;
  ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://i-wiki.cn/2022/89cc67af9bd9/</guid>
-            <title>hyperf学习笔记</title>
-            <link>https://i-wiki.cn/2022/89cc67af9bd9/</link>
-            <category term="PHP" scheme="https://i-wiki.cn/categories/PHP/" />
-            <category term="框架" scheme="https://i-wiki.cn/categories/PHP/%E6%A1%86%E6%9E%B6/" />
-            <category term="学习笔记" scheme="https://i-wiki.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" />
-            <category term="PHP" scheme="https://i-wiki.cn/tags/PHP/" />
-            <pubDate>Tue, 27 Sep 2022 18:54:09 +0800</pubDate>
-            <description><![CDATA[  ]]></description>
         </item>
     </channel>
 </rss>
