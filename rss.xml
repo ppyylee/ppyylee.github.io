@@ -19,8 +19,8 @@
             <link>https://i-wiki.cn/2021/b8326b69e0d3/</link>
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="mysql" scheme="https://i-wiki.cn/categories/backend/mysql/" />
-            <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
             <category term="mysql" scheme="https://i-wiki.cn/tags/mysql/" />
+            <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
             <pubDate>Sat, 09 Oct 2021 12:39:12 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;使用场景&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用场景&#34;&gt;#&lt;/a&gt; 使用场景&lt;/h2&gt;
 &lt;p&gt;在实际应用中，经常碰到导入数据的功能，当导入的数据不存在时则进行添加，有修改时则进行更新&lt;/p&gt;
@@ -57,7 +57,7 @@ values (balance);
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;a-iddeadlock产生死锁的原因a&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#a-iddeadlock产生死锁的原因a&#34;&gt;#&lt;/a&gt; &amp;lt;a id=&amp;quot;deadlock&amp;quot;&amp;gt; 产生死锁的原因 &amp;lt;/a&amp;gt;&lt;/h4&gt;
+&lt;h4 id=&#34;产生死锁的原因&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#产生死锁的原因&#34;&gt;#&lt;/a&gt; 产生死锁的原因&lt;/h4&gt;
 &lt;blockquote&gt;
 &lt;p&gt;insert ... on duplicate key 在执行时，innodb 引擎会先判断插入的行是否产生重复 key 错误，如果存在，在对该现有的行加上 S（共享锁）锁，如果返回该行数据给 mysql, 然后 mysql 执行完 duplicate 后的 update 操作，然后对该记录加上 X（排他锁），最后进行 update 写入。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -72,8 +72,8 @@ values (balance);
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="事务模式" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
-            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="事务模式" scheme="https://i-wiki.cn/tags/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
             <pubDate>Thu, 30 Sep 2021 17:45:47 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;workflow模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#workflow模式&#34;&gt;#&lt;/a&gt; Workflow 模式&lt;/h1&gt;
@@ -198,8 +198,8 @@ values (balance);
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="事务模式" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
-            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="事务模式" scheme="https://i-wiki.cn/tags/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
             <pubDate>Thu, 30 Sep 2021 17:34:59 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;xa事务模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#xa事务模式&#34;&gt;#&lt;/a&gt; XA 事务模式&lt;/h1&gt;
@@ -248,8 +248,8 @@ xa commit &#39;4fPqCNTYeSG&#39;
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="事务模式" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
-            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="事务模式" scheme="https://i-wiki.cn/tags/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
             <pubDate>Thu, 30 Sep 2021 12:11:46 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;tcc事务模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#tcc事务模式&#34;&gt;#&lt;/a&gt; TCC 事务模式&lt;/h1&gt;
@@ -308,8 +308,8 @@ xa commit &#39;4fPqCNTYeSG&#39;
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="事务模式" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
-            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="事务模式" scheme="https://i-wiki.cn/tags/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
             <pubDate>Wed, 29 Sep 2021 18:23:12 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;二阶段消息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二阶段消息&#34;&gt;#&lt;/a&gt; 二阶段消息&lt;/h1&gt;
@@ -400,8 +400,8 @@ xa commit &#39;4fPqCNTYeSG&#39;
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="事务模式" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
-            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="事务模式" scheme="https://i-wiki.cn/tags/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
             <pubDate>Wed, 29 Sep 2021 16:21:17 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;saga模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#saga模式&#34;&gt;#&lt;/a&gt; SAGA 模式&lt;/h1&gt;
@@ -465,8 +465,8 @@ xa commit &#39;4fPqCNTYeSG&#39;
             <link>https://i-wiki.cn/2021/b520c7c67266/</link>
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
-            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="DTM" scheme="https://i-wiki.cn/tags/DTM/" />
             <pubDate>Wed, 29 Sep 2021 10:47:15 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;dtm架构图&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#dtm架构图&#34;&gt;#&lt;/a&gt; DTM 架构图&lt;/h2&gt;
@@ -530,8 +530,8 @@ xa commit &#39;4fPqCNTYeSG&#39;
             <link>https://i-wiki.cn/2021/0d3f3db47143/</link>
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
-            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+            <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
             <pubDate>Tue, 28 Sep 2021 16:18:01 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;事务&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#事务&#34;&gt;#&lt;/a&gt; 事务&lt;/h2&gt;
 &lt;p&gt;事务具有 4 个属性：原子性、一致性、隔离性、持久性。这四个属性通常称为 ACID 特性。&lt;/p&gt;

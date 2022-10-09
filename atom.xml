@@ -49,7 +49,7 @@ values (balance);
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;a-iddeadlock产生死锁的原因a&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#a-iddeadlock产生死锁的原因a&#34;&gt;#&lt;/a&gt; &amp;lt;a id=&amp;quot;deadlock&amp;quot;&amp;gt; 产生死锁的原因 &amp;lt;/a&amp;gt;&lt;/h4&gt;
+&lt;h4 id=&#34;产生死锁的原因&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#产生死锁的原因&#34;&gt;#&lt;/a&gt; 产生死锁的原因&lt;/h4&gt;
 &lt;blockquote&gt;
 &lt;p&gt;insert ... on duplicate key 在执行时，innodb 引擎会先判断插入的行是否产生重复 key 错误，如果存在，在对该现有的行加上 S（共享锁）锁，如果返回该行数据给 mysql, 然后 mysql 执行完 duplicate 后的 update 操作，然后对该记录加上 X（排他锁），最后进行 update 写入。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -58,8 +58,8 @@ values (balance);
 </content>
         <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
         <category term="mysql" scheme="https://i-wiki.cn/categories/backend/mysql/" />
-        <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
         <category term="mysql" scheme="https://i-wiki.cn/tags/mysql/" />
+        <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
         <updated>2021-10-09T04:39:12.000Z</updated>
     </entry>
     <entry>
@@ -183,8 +183,8 @@ values (balance);
         <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
         <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="事务模式" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
-        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="事务模式" scheme="https://i-wiki.cn/tags/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
         <updated>2021-09-30T09:45:47.000Z</updated>
     </entry>
@@ -233,8 +233,8 @@ xa commit &#39;4fPqCNTYeSG&#39;
         <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
         <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="事务模式" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
-        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="事务模式" scheme="https://i-wiki.cn/tags/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
         <updated>2021-09-30T09:34:59.000Z</updated>
     </entry>
@@ -293,8 +293,8 @@ xa commit &#39;4fPqCNTYeSG&#39;
         <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
         <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="事务模式" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
-        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="事务模式" scheme="https://i-wiki.cn/tags/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
         <updated>2021-09-30T04:11:46.000Z</updated>
     </entry>
@@ -385,8 +385,8 @@ xa commit &#39;4fPqCNTYeSG&#39;
         <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
         <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="事务模式" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
-        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="事务模式" scheme="https://i-wiki.cn/tags/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
         <updated>2021-09-29T10:23:12.000Z</updated>
     </entry>
@@ -451,8 +451,8 @@ xa commit &#39;4fPqCNTYeSG&#39;
         <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
         <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="事务模式" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
-        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="事务模式" scheme="https://i-wiki.cn/tags/%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F/" />
         <updated>2021-09-29T08:21:17.000Z</updated>
     </entry>
@@ -516,8 +516,8 @@ xa commit &#39;4fPqCNTYeSG&#39;
 </content>
         <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
         <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
-        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="DTM" scheme="https://i-wiki.cn/tags/DTM/" />
         <updated>2021-09-29T02:47:15.000Z</updated>
     </entry>
@@ -593,8 +593,8 @@ xa commit &#39;4fPqCNTYeSG&#39;
 </content>
         <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
         <category term="分布式事务" scheme="https://i-wiki.cn/categories/backend/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
-        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+        <category term="分布式事务" scheme="https://i-wiki.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
         <updated>2021-09-28T08:18:01.000Z</updated>
     </entry>
     <entry>

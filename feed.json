@@ -11,12 +11,12 @@
             "url": "https://i-wiki.cn/2021/b8326b69e0d3/",
             "title": "Mysql: on duplicate key update",
             "date_published": "2021-10-09T04:39:12.000Z",
-            "content_html": "<h2 id=\"使用场景\"><a class=\"anchor\" href=\"#使用场景\">#</a> 使用场景</h2>\n<p>在实际应用中，经常碰到导入数据的功能，当导入的数据不存在时则进行添加，有修改时则进行更新</p>\n<blockquote>\n<p>在 MySQL 数据库中，如果在 insert 语句后面带上 ON DUPLICATE KEY UPDATE 子句，而要插入的行与表中现有记录的惟一索引或主键中产生重复值，那么就会发生旧行的更新；如果插入的行数据与现有表中记录的唯一索引或者主键不重复，则执行新纪录插入操作。</p>\n<p>说通俗点就是数据库中存在某个记录时，执行这个语句会更新，而不存在这条记录时，就会插入。</p>\n</blockquote>\n<h4 id=\"用法\"><a class=\"anchor\" href=\"#用法\">#</a> 用法</h4>\n<p>该语句是基于唯一索引或主键使用，比如一个字段 user_id 被加上了 unique index，并且表中已经存在了一条记录值为 1, 则会更新记录 1 的 balance 字段</p>\n<blockquote>\n<p>ON DUPLICATE KEY UPDATE 后面可以放多个字段，用英文逗号分割</p>\n</blockquote>\n<pre><code class=\"language-mysql\">insert into dtm_busi.user_account (user_id, balance) \nvalues (1, 10000),\n  (2, 10000) on DUPLICATE KEY\nUPDATE balance =\nvalues (balance);\n</code></pre>\n<h4 id=\"注意点\"><a class=\"anchor\" href=\"#注意点\">#</a> 注意点</h4>\n<ol>\n<li>\n<p>因为这是个插入语句，所以不能加 where 条件。如果是插入操作，受到影响行的值为 1；如果更新操作，受到影响行的值为 2；如果更新的数据和已有的数据一样（就相当于没变，所有值保持不变），受到影响的行的值为 0。</p>\n</li>\n<li>\n<p>on duplicate key update 有一个特性就是，每次是更新的情况下 id 也是会自增加 1 的，比如说现在 id 最大值的 5, 然后进行了一次更新操作，再进行一次插入操作时，id 的值就变成了 7 而不是 6.</p>\n<blockquote>\n<p>为了解决这个问题，有两种方式，第一种是修改 <code>innodb_autoinc_lock_mode</code>  中的模式，第二种是将语句修拆分为更新和操作 2 个动作</p>\n<p>第一种方式:innodb_autoinc_lock_mode 中有 3 中模式，0,1 和 2,mysql5 的默认配置是 1,</p>\n<p>0 是每次分配自增 id 的时候都会锁表.<a href=\"#deadlock\"> 有死锁可能</a></p>\n<p>1 只有在 <code>bulk insert</code>  的时候才会锁表，简单 <code>insert</code>  的时候只会使用一个 light-weight mutex, 比 0 的并发性能高</p>\n<p>2  <code>simple insert</code>  语句能保证 ID 是连续的，但是 <code>bulk insert</code>  的 ID 则可能有空洞。<br />\n主从复制的同一张表下的同一行 id 有可能不一样</p>\n<p>数据库默认是 1 的情况下，就会发生上面的那种现象，每次使用 <code>insert into .. on duplicate key update </code> 的时候都会把简单自增 id 增加，不管是发生了 <code>insert</code>  还是 <code>update</code></p>\n</blockquote>\n</li>\n</ol>\n<h4 id=\"a-iddeadlock产生死锁的原因a\"><a class=\"anchor\" href=\"#a-iddeadlock产生死锁的原因a\">#</a> &lt;a id=&quot;deadlock&quot;&gt; 产生死锁的原因 &lt;/a&gt;</h4>\n<blockquote>\n<p>insert ... on duplicate key 在执行时，innodb 引擎会先判断插入的行是否产生重复 key 错误，如果存在，在对该现有的行加上 S（共享锁）锁，如果返回该行数据给 mysql, 然后 mysql 执行完 duplicate 后的 update 操作，然后对该记录加上 X（排他锁），最后进行 update 写入。</p>\n</blockquote>\n<p>如果有两个事务并发的执行同样的语句，那么就会产生 death lock，如：</p>\n<p><img data-src=\"https://img-blog.csdnimg.cn/img_convert/e4013517319ac323fa4be1ad92adab94.png\" alt=\"img\" /></p>\n",
+            "content_html": "<h2 id=\"使用场景\"><a class=\"anchor\" href=\"#使用场景\">#</a> 使用场景</h2>\n<p>在实际应用中，经常碰到导入数据的功能，当导入的数据不存在时则进行添加，有修改时则进行更新</p>\n<blockquote>\n<p>在 MySQL 数据库中，如果在 insert 语句后面带上 ON DUPLICATE KEY UPDATE 子句，而要插入的行与表中现有记录的惟一索引或主键中产生重复值，那么就会发生旧行的更新；如果插入的行数据与现有表中记录的唯一索引或者主键不重复，则执行新纪录插入操作。</p>\n<p>说通俗点就是数据库中存在某个记录时，执行这个语句会更新，而不存在这条记录时，就会插入。</p>\n</blockquote>\n<h4 id=\"用法\"><a class=\"anchor\" href=\"#用法\">#</a> 用法</h4>\n<p>该语句是基于唯一索引或主键使用，比如一个字段 user_id 被加上了 unique index，并且表中已经存在了一条记录值为 1, 则会更新记录 1 的 balance 字段</p>\n<blockquote>\n<p>ON DUPLICATE KEY UPDATE 后面可以放多个字段，用英文逗号分割</p>\n</blockquote>\n<pre><code class=\"language-mysql\">insert into dtm_busi.user_account (user_id, balance) \nvalues (1, 10000),\n  (2, 10000) on DUPLICATE KEY\nUPDATE balance =\nvalues (balance);\n</code></pre>\n<h4 id=\"注意点\"><a class=\"anchor\" href=\"#注意点\">#</a> 注意点</h4>\n<ol>\n<li>\n<p>因为这是个插入语句，所以不能加 where 条件。如果是插入操作，受到影响行的值为 1；如果更新操作，受到影响行的值为 2；如果更新的数据和已有的数据一样（就相当于没变，所有值保持不变），受到影响的行的值为 0。</p>\n</li>\n<li>\n<p>on duplicate key update 有一个特性就是，每次是更新的情况下 id 也是会自增加 1 的，比如说现在 id 最大值的 5, 然后进行了一次更新操作，再进行一次插入操作时，id 的值就变成了 7 而不是 6.</p>\n<blockquote>\n<p>为了解决这个问题，有两种方式，第一种是修改 <code>innodb_autoinc_lock_mode</code>  中的模式，第二种是将语句修拆分为更新和操作 2 个动作</p>\n<p>第一种方式:innodb_autoinc_lock_mode 中有 3 中模式，0,1 和 2,mysql5 的默认配置是 1,</p>\n<p>0 是每次分配自增 id 的时候都会锁表.<a href=\"#deadlock\"> 有死锁可能</a></p>\n<p>1 只有在 <code>bulk insert</code>  的时候才会锁表，简单 <code>insert</code>  的时候只会使用一个 light-weight mutex, 比 0 的并发性能高</p>\n<p>2  <code>simple insert</code>  语句能保证 ID 是连续的，但是 <code>bulk insert</code>  的 ID 则可能有空洞。<br />\n主从复制的同一张表下的同一行 id 有可能不一样</p>\n<p>数据库默认是 1 的情况下，就会发生上面的那种现象，每次使用 <code>insert into .. on duplicate key update </code> 的时候都会把简单自增 id 增加，不管是发生了 <code>insert</code>  还是 <code>update</code></p>\n</blockquote>\n</li>\n</ol>\n<h4 id=\"产生死锁的原因\"><a class=\"anchor\" href=\"#产生死锁的原因\">#</a> 产生死锁的原因</h4>\n<blockquote>\n<p>insert ... on duplicate key 在执行时，innodb 引擎会先判断插入的行是否产生重复 key 错误，如果存在，在对该现有的行加上 S（共享锁）锁，如果返回该行数据给 mysql, 然后 mysql 执行完 duplicate 后的 update 操作，然后对该记录加上 X（排他锁），最后进行 update 写入。</p>\n</blockquote>\n<p>如果有两个事务并发的执行同样的语句，那么就会产生 death lock，如：</p>\n<p><img data-src=\"https://img-blog.csdnimg.cn/img_convert/e4013517319ac323fa4be1ad92adab94.png\" alt=\"img\" /></p>\n",
             "tags": [
                 "后端",
                 "mysql",
-                "后端",
-                "mysql"
+                "mysql",
+                "后端"
             ]
         },
         {
@@ -29,8 +29,8 @@
                 "后端",
                 "分布式事务",
                 "事务模式",
-                "分布式事务",
                 "后端",
+                "分布式事务",
                 "事务模式"
             ]
         },
@@ -44,8 +44,8 @@
                 "后端",
                 "分布式事务",
                 "事务模式",
-                "分布式事务",
                 "后端",
+                "分布式事务",
                 "事务模式"
             ]
         },
@@ -59,8 +59,8 @@
                 "后端",
                 "分布式事务",
                 "事务模式",
-                "分布式事务",
                 "后端",
+                "分布式事务",
                 "事务模式"
             ]
         },
@@ -74,8 +74,8 @@
                 "后端",
                 "分布式事务",
                 "事务模式",
-                "分布式事务",
                 "后端",
+                "分布式事务",
                 "事务模式"
             ]
         },
@@ -89,8 +89,8 @@
                 "后端",
                 "分布式事务",
                 "事务模式",
-                "分布式事务",
                 "后端",
+                "分布式事务",
                 "事务模式"
             ]
         },
@@ -103,8 +103,8 @@
             "tags": [
                 "后端",
                 "分布式事务",
-                "分布式事务",
                 "后端",
+                "分布式事务",
                 "DTM"
             ]
         },
@@ -117,8 +117,8 @@
             "tags": [
                 "后端",
                 "分布式事务",
-                "分布式事务",
-                "后端"
+                "后端",
+                "分布式事务"
             ]
         },
         {
