@@ -12,7 +12,7 @@
     <category term="学习" />
     <entry>
         <id>https://i-wiki.cn/2023/44b61dee094f/</id>
-        <title>\[leetcode\]1807. 替换字符串中的括号内容</title>
+        <title>leetcode-1807. 替换字符串中的括号内容</title>
         <link rel="alternate" href="https://i-wiki.cn/2023/44b61dee094f/"/>
         <content type="html">&lt;h4 id=&#34;1807-替换字符串中的括号内容&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1807-替换字符串中的括号内容&#34;&gt;#&lt;/a&gt; &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9sZWV0Y29kZS5jbi9wcm9ibGVtcy9ldmFsdWF0ZS10aGUtYnJhY2tldC1wYWlycy1vZi1hLXN0cmluZy8=&#34;&gt;1807. 替换字符串中的括号内容&lt;/span&gt;&lt;/h4&gt;
 &lt;p&gt;难度：中等&lt;/p&gt;

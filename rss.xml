@@ -9,13 +9,13 @@
           <name>PPYYLEE</name>
         </author>
         <description>渺小的沙子 无尽的空洞</description>
-        <language>zh-Cn</language>
+        <language>zh-CN</language>
         <pubDate>Thu, 12 Jan 2023 17:24:08 +0800</pubDate>
         <lastBuildDate>Thu, 12 Jan 2023 17:24:08 +0800</lastBuildDate>
         <category term="学习" />
         <item>
             <guid isPermalink="true">https://i-wiki.cn/2023/44b61dee094f/</guid>
-            <title>\[leetcode\]1807. 替换字符串中的括号内容</title>
+            <title>leetcode-1807. 替换字符串中的括号内容</title>
             <link>https://i-wiki.cn/2023/44b61dee094f/</link>
             <category term="算法" scheme="https://i-wiki.cn/categories/%E7%AE%97%E6%B3%95/" />
             <category term="leetcode" scheme="https://i-wiki.cn/categories/%E7%AE%97%E6%B3%95/leetcode/" />
