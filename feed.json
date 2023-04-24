@@ -7,6 +7,30 @@
     "home_page_url": "https://i-wiki.cn",
     "items": [
         {
+            "id": "https://i-wiki.cn/2023/e378d05a98d4/",
+            "url": "https://i-wiki.cn/2023/e378d05a98d4/",
+            "title": "Mysql 添加远程账号",
+            "date_published": "2023-02-16T09:28:16.000Z",
+            "content_html": "<ol>\n<li>\n<p>添加一个新账号</p>\n<pre><code class=\"language-mysql\">create user 'account'@'%' identified by 'password';\n\n</code></pre>\n</li>\n<li>\n<p>赋予新账号权限</p>\n<pre><code class=\"language-mysql\">grant all privileges on `Test`.* to 'account'@'%' ;\n\n#权限参考\n\tall 所有权限\n\tselect 查询权限\n\tinsert 插入权限\n\tdelete 删除权限\n\tupdate 更新权限\n\t\n*.*  所有表\t\n</code></pre>\n</li>\n<li>\n<p>刷新权限</p>\n<pre><code class=\"language-mysql\">FLUSH PRIVILEGES; \n</code></pre>\n</li>\n</ol>\n",
+            "tags": [
+                "后端",
+                "mysql",
+                "后端"
+            ]
+        },
+        {
+            "id": "https://i-wiki.cn/2023/8cf859c786e2/",
+            "url": "https://i-wiki.cn/2023/8cf859c786e2/",
+            "title": "Mysql8 新安装后无密码登录",
+            "date_published": "2023-02-16T09:21:36.041Z",
+            "content_html": "<ol>\n<li>\n<p>修改配置文件</p>\n<figure class=\"highlight sh\"><figcaption data-lang=\"sh\"></figcaption><table><tr><td data-num=\"1\"></td><td><pre><span class=\"token function\">vi</span> /etc/my.cnf                             <span class=\"token comment\">#进入 mysql 配置文件</span></pre></td></tr></table></figure></li>\n<li>\n<p>在配置文件中设置</p>\n<pre><code>skip-grant-tables                          #即不校验密码登录\n</code></pre>\n</li>\n<li>\n<p>重启 mysql</p>\n<figure class=\"highlight sh\"><figcaption data-lang=\"sh\"></figcaption><table><tr><td data-num=\"1\"></td><td><pre>systemctl restart mysqld</pre></td></tr><tr><td data-num=\"2\"></td><td><pre>mysql <span class=\"token parameter variable\">-u</span> root <span class=\"token parameter variable\">-p</span>    <span class=\"token comment\">#不用输入密码，直接回车</span></pre></td></tr></table></figure></li>\n<li>\n<p>将密码置空</p>\n<pre><code class=\"language-mysql\">update user set authentication_string='' where user = 'root';\n</code></pre>\n</li>\n<li>\n<p>删除 2 中添加的配置项并重启 mysql</p>\n</li>\n<li>\n<p>如需修改密码</p>\n<pre><code class=\"language-mysql\">\nALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你的密码';\n// 刷新权限表\nFLUSH privileges;\n</code></pre>\n</li>\n</ol>\n",
+            "tags": [
+                "后端",
+                "mysql",
+                "后端"
+            ]
+        },
+        {
             "id": "https://i-wiki.cn/2023/44b61dee094f/",
             "url": "https://i-wiki.cn/2023/44b61dee094f/",
             "title": "leetcode-1807. 替换字符串中的括号内容",

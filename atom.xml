@@ -8,8 +8,84 @@
     <author>
       <name>PPYYLEE</name>
     </author>
-    <updated>2023-01-12T09:24:08.000Z</updated>
+    <updated>2023-02-16T09:28:16.000Z</updated>
     <category term="学习" />
+    <entry>
+        <id>https://i-wiki.cn/2023/e378d05a98d4/</id>
+        <title>Mysql 添加远程账号</title>
+        <link rel="alternate" href="https://i-wiki.cn/2023/e378d05a98d4/"/>
+        <content type="html">&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;添加一个新账号&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;create user &#39;account&#39;@&#39;%&#39; identified by &#39;password&#39;;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;赋予新账号权限&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;grant all privileges on `Test`.* to &#39;account&#39;@&#39;%&#39; ;
+
+#权限参考
+	all 所有权限
+	select 查询权限
+	insert 插入权限
+	delete 删除权限
+	update 更新权限
+	
+*.*  所有表	
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;刷新权限&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;FLUSH PRIVILEGES; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
+        <category term="mysql" scheme="https://i-wiki.cn/categories/backend/mysql/" />
+        <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+        <updated>2023-02-16T09:28:16.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://i-wiki.cn/2023/8cf859c786e2/</id>
+        <title>Mysql8 新安装后无密码登录</title>
+        <link rel="alternate" href="https://i-wiki.cn/2023/8cf859c786e2/"/>
+        <content type="html">&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;修改配置文件&lt;/p&gt;
+&lt;figure class=&#34;highlight sh&#34;&gt;&lt;figcaption data-lang=&#34;sh&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;vi&lt;/span&gt; /etc/my.cnf                             &lt;span class=&#34;token comment&#34;&gt;#进入 mysql 配置文件&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在配置文件中设置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;skip-grant-tables                          #即不校验密码登录
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重启 mysql&lt;/p&gt;
+&lt;figure class=&#34;highlight sh&#34;&gt;&lt;figcaption data-lang=&#34;sh&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;systemctl restart mysqld&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;mysql &lt;span class=&#34;token parameter variable&#34;&gt;-u&lt;/span&gt; root &lt;span class=&#34;token parameter variable&#34;&gt;-p&lt;/span&gt;    &lt;span class=&#34;token comment&#34;&gt;#不用输入密码，直接回车&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将密码置空&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;update user set authentication_string=&#39;&#39; where user = &#39;root&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除 2 中添加的配置项并重启 mysql&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如需修改密码&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;
+ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;你的密码&#39;;
+// 刷新权限表
+FLUSH privileges;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
+        <category term="mysql" scheme="https://i-wiki.cn/categories/backend/mysql/" />
+        <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+        <updated>2023-02-16T09:21:36.041Z</updated>
+    </entry>
     <entry>
         <id>https://i-wiki.cn/2023/44b61dee094f/</id>
         <title>leetcode-1807. 替换字符串中的括号内容</title>
