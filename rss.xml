@@ -711,8 +711,8 @@ xa commit &#39;4fPqCNTYeSG&#39;
             <link>https://i-wiki.cn/2021/78228f97963e/</link>
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="go" scheme="https://i-wiki.cn/categories/backend/go/" />
-            <category term="go" scheme="https://i-wiki.cn/tags/go/" />
             <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+            <category term="go" scheme="https://i-wiki.cn/tags/go/" />
             <pubDate>Sat, 02 Jan 2021 12:39:12 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;iota&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#iota&#34;&gt;#&lt;/a&gt; iota&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;iota&lt;/code&gt;  是 &lt;code&gt;go&lt;/code&gt;  语言的常量计数器，只能在常量的表达式中使用。  &lt;code&gt;iota&lt;/code&gt;  在 &lt;code&gt;const&lt;/code&gt;  关键字出现时将被重置为 &lt;code&gt;0&lt;/code&gt; 。 &lt;code&gt;const&lt;/code&gt;  中每新增一行常量声明将使 &lt;code&gt;iota&lt;/code&gt;  计数一次 ( &lt;code&gt;iota&lt;/code&gt;  可理解为 &lt;code&gt;const&lt;/code&gt;  语句块中的行索引)。 使用 &lt;code&gt;iota&lt;/code&gt;  能简化定义，在定义枚举时很有用。&lt;/p&gt;
