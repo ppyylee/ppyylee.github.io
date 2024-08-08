@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://i-wiki.cn</id>
-    <title>PPYYLEE</title>
+    <title>爱WIKI</title>
     <subtitle>学无止境</subtitle>
     <icon>https://i-wiki.cn/images/favicon.ico</icon>
     <link href="https://i-wiki.cn" />
     <author>
-      <name>爱wiki</name>
+      <name>PPYYLEE</name>
     </author>
     <updated>2023-02-16T09:28:16.000Z</updated>
     <category term="学习" />
