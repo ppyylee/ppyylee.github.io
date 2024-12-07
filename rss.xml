@@ -19,8 +19,8 @@
             <link>https://i-wiki.cn/2024/343f91fc83c3/</link>
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="go" scheme="https://i-wiki.cn/categories/backend/go/" />
-            <category term="go" scheme="https://i-wiki.cn/tags/go/" />
             <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+            <category term="go" scheme="https://i-wiki.cn/tags/go/" />
             <pubDate>Tue, 03 Dec 2024 22:08:38 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;go中常用容器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#go中常用容器&#34;&gt;#&lt;/a&gt; GO 中常用容器&lt;/h3&gt;
 &lt;h4 id=&#34;1-数组&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-数组&#34;&gt;#&lt;/a&gt; 1. 数组&lt;/h4&gt;
@@ -135,8 +135,8 @@ FLUSH privileges;
             <link>https://i-wiki.cn/2021/fd677132940e/</link>
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="go" scheme="https://i-wiki.cn/categories/backend/go/" />
-            <category term="go" scheme="https://i-wiki.cn/tags/go/" />
             <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+            <category term="go" scheme="https://i-wiki.cn/tags/go/" />
             <pubDate>Wed, 01 Dec 2021 00:46:24 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;基本语法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#基本语法&#34;&gt;#&lt;/a&gt; 基本语法&lt;/h2&gt;
 &lt;h4 id=&#34;1-变量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-变量&#34;&gt;#&lt;/a&gt; 1. 变量&lt;/h4&gt;
@@ -171,8 +171,8 @@ FLUSH privileges;
             <link>https://i-wiki.cn/2021/b8326b69e0d3/</link>
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="mysql" scheme="https://i-wiki.cn/categories/backend/mysql/" />
-            <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
             <category term="mysql" scheme="https://i-wiki.cn/tags/mysql/" />
+            <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
             <pubDate>Sat, 09 Oct 2021 12:39:12 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;使用场景&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用场景&#34;&gt;#&lt;/a&gt; 使用场景&lt;/h2&gt;
 &lt;p&gt;在实际应用中，经常碰到导入数据的功能，当导入的数据不存在时则进行添加，有修改时则进行更新&lt;/p&gt;
@@ -769,8 +769,8 @@ xa commit &#39;4fPqCNTYeSG&#39;
             <link>https://i-wiki.cn/2021/78228f97963e/</link>
             <category term="后端" scheme="https://i-wiki.cn/categories/backend/" />
             <category term="go" scheme="https://i-wiki.cn/categories/backend/go/" />
-            <category term="go" scheme="https://i-wiki.cn/tags/go/" />
             <category term="后端" scheme="https://i-wiki.cn/tags/backend/" />
+            <category term="go" scheme="https://i-wiki.cn/tags/go/" />
             <pubDate>Sat, 02 Jan 2021 12:39:12 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;iota&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#iota&#34;&gt;#&lt;/a&gt; iota&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;iota&lt;/code&gt;  是 &lt;code&gt;go&lt;/code&gt;  语言的常量计数器，只能在常量的表达式中使用。  &lt;code&gt;iota&lt;/code&gt;  在 &lt;code&gt;const&lt;/code&gt;  关键字出现时将被重置为 &lt;code&gt;0&lt;/code&gt; 。 &lt;code&gt;const&lt;/code&gt;  中每新增一行常量声明将使 &lt;code&gt;iota&lt;/code&gt;  计数一次 ( &lt;code&gt;iota&lt;/code&gt;  可理解为 &lt;code&gt;const&lt;/code&gt;  语句块中的行索引)。 使用 &lt;code&gt;iota&lt;/code&gt;  能简化定义，在定义枚举时很有用。&lt;/p&gt;
